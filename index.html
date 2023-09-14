@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Kalkulator Persegi</title>
+</head>
+<style>
+
+    .header {
+        background-color:#007BFF;
+        color:#fff;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 60px;
+    }
+
+    body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #DB7093;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="number"] {
+    width: 120px;
+    padding: 5px;
+    margin: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+</style>
+<body>
+    <header>
+        <h1>Kalkulator Matematika</h1>
+    </header>
+    <div class="container">
+        <h1>Kalkulator Hitung Persegi</h1>
+        <label for="sideLength">Panjang Sisi:</label>
+        <input type="number" id="sideLength" placeholder="Masukkan panjang sisi">
+        <button id="calculateButton">Hitung</button>
+        <button id="resetButton">Reset</button>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const sideLengthInput = document.getElementById("sideLength");
+    const calculateButton = document.getElementById("calculateButton");
+    const resetButton = document.getElementById("resetButton");
+    const resultElement = document.getElementById("result");
+
+    calculateButton.addEventListener("click", function() {
+        const sideLength = parseFloat(sideLengthInput.value);
+
+        if (!isNaN(sideLength)) {
+            const area = sideLength * sideLength;
+            const perimeter = 4 * sideLength;
+            resultElement.innerHTML = `
+                <p>Luas Persegi: ${area}</p>
+                <p>Keliling Persegi: ${perimeter}</p>
+            `;
+        } else {
+            resultElement.innerHTML = "Masukkan panjang sisi yang valid.";
+        }
+    });
+    resetButton.addEventListener("click", function() {
+        // Mengosongkan input dan hasil
+        sideLengthInput.value = "";
+        resultElement.innerHTML = "";
+    });
+});
+
+    </script>
+</body>
+</html>
